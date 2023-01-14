@@ -1,0 +1,10 @@
+2023-01-14 21:39:30,705 INFO telegram.test.telegram.bot.test.Application [main] Starting Application using Java 19.0.1 on 192.168.0.2 with PID 4461 (/Users/oellore/Documents/telegram.bot.test/build/classes/java/main started by oellore in /Users/oellore/Documents/telegram.bot.test)
+2023-01-14 21:39:30,705 INFO telegram.test.telegram.bot.test.Application [main] No active profile set, falling back to 1 default profile: "default"
+2023-01-14 21:39:31,479 INFO telegram.test.telegram.bot.test.Application [main] Started Application in 0.898 seconds (JVM running for 1.124)
+2023-01-14 21:53:11,737 INFO telegram.test.telegram.bot.test.Application [main] Starting Application using Java 19.0.1 on 192.168.0.2 with PID 4687 (/Users/oellore/Documents/telegram.bot.test/build/classes/java/main started by oellore in /Users/oellore/Documents/telegram.bot.test)
+2023-01-14 21:53:11,738 INFO telegram.test.telegram.bot.test.Application [main] No active profile set, falling back to 1 default profile: "default"
+2023-01-14 21:53:12,510 INFO telegram.test.telegram.bot.test.Application [main] Started Application in 0.905 seconds (JVM running for 1.146)
+2023-01-14 21:55:52,969 INFO telegram.test.telegram.bot.test.Application [main] Starting Application using Java 19.0.1 on 192.168.0.2 with PID 4700 (/Users/oellore/Documents/telegram.bot.test/build/classes/java/main started by oellore in /Users/oellore/Documents/telegram.bot.test)
+2023-01-14 21:55:52,970 INFO telegram.test.telegram.bot.test.Application [main] No active profile set, falling back to 1 default profile: "default"
+2023-01-14 21:55:53,721 INFO telegram.test.telegram.bot.test.Application [main] Started Application in 0.872 seconds (JVM running for 1.086)
+2023-01-14 21:55:54,219 INFO telegram.test.telegram.bot.test.service.TelegramBot [QuelariBot Telegram Executor] Replied to userIlya
