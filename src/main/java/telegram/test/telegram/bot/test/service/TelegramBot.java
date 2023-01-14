@@ -12,9 +12,10 @@ public class TelegramBot extends TelegramLongPollingBot {
 
     final BotConfig config;
 
-    public TelegramBot(BotConfig config){
+    public TelegramBot(BotConfig config) {
         this.config = config;
     }
+
     @Override
     public String getBotUsername() {
         return config.getBotName();
@@ -27,19 +28,18 @@ public class TelegramBot extends TelegramLongPollingBot {
 
     @Override
     public void onUpdateReceived(Update update) {
-        if (update.hasMessage() && update.getMessage().hasText()){
+        if (update.hasMessage() && update.getMessage().hasText()) {
             String messageText = update.getMessage().getText();
             long chatId = update.getMessage().getChatId();
 
-            switch (messageText){
-                case "/start":
-                    startCommandReceived(chatId, update.getMessage().getChat().getFirstName());
-                default: sendMessage(chatId, "Саша самая красивая");
-                break;
+            if (messageText.equals("/start")) {
+                startCommandReceived(chatId, update.getMessage().getChat().getFirstName());
             }
+            sendMessage(chatId, "Саша самая красивая");
         }
     }
-    public void startCommandReceived(long chatId, String name){
+
+    public void startCommandReceived(long chatId, String name) {
         String answer = "test";
         sendMessage(chatId, answer);
     }
@@ -51,8 +51,7 @@ public class TelegramBot extends TelegramLongPollingBot {
 
         try {
             execute(message);
-        }
-        catch (TelegramApiException exception) {
+        } catch (TelegramApiException exception) {
 
         }
     }
