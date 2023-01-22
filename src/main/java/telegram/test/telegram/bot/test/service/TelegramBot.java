@@ -70,9 +70,9 @@ public class TelegramBot extends TelegramLongPollingBot {
                 sendHelpText(chatId, "HELP_TEXT");
                 break;
             default:
-                sendAnotherText(chatId, "Нажми кнопку, балда");
+                sendAnotherText(chatId, userName + ", нажми кнопку, балда");
                 break;
-                //todo поработать тут с условиями продумать логику
+            //todo поработать тут с условиями продумать логику
         }
     }
 

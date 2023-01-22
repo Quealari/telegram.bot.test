@@ -80,3 +80,52 @@ java.lang.NullPointerException: Cannot invoke "org.telegram.telegrambots.meta.ap
 2023-01-22 22:57:22,257 INFO telegram.test.telegram.bot.test.service.TelegramBot [QuelariBot Telegram Executor] Replied to userIlya
 2023-01-22 22:57:26,476 INFO telegram.test.telegram.bot.test.service.TelegramBot [QuelariBot Telegram Executor] Hi, Ilya! I'm a Telegram bot.'Reply sent
 2023-01-22 22:57:26,477 INFO telegram.test.telegram.bot.test.service.TelegramBot [QuelariBot Telegram Executor] Replied to userIlya
+2023-01-22 22:57:55,282 INFO telegram.test.telegram.bot.test.service.TelegramBot [QuelariBot Telegram Executor] Hi, Ilya! I'm a Telegram bot.'Reply sent
+2023-01-22 22:57:55,286 ERROR org.telegram.telegrambots.updatesreceivers.DefaultBotSession [QuelariBot Telegram Executor] Cannot invoke "org.telegram.telegrambots.meta.api.objects.Message.getChat()" because the return value of "org.telegram.telegrambots.meta.api.objects.Update.getMessage()" is null
+java.lang.NullPointerException: Cannot invoke "org.telegram.telegrambots.meta.api.objects.Message.getChat()" because the return value of "org.telegram.telegrambots.meta.api.objects.Update.getMessage()" is null
+	at telegram.test.telegram.bot.test.service.TelegramBot.onUpdateReceived(TelegramBot.java:61)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at org.telegram.telegrambots.meta.generics.LongPollingBot.onUpdatesReceived(LongPollingBot.java:27)
+	at org.telegram.telegrambots.updatesreceivers.DefaultBotSession$HandlerThread.run(DefaultBotSession.java:317)
+2023-01-22 22:57:56,439 INFO telegram.test.telegram.bot.test.service.TelegramBot [QuelariBot Telegram Executor] Reply sent
+2023-01-22 22:57:56,440 ERROR org.telegram.telegrambots.updatesreceivers.DefaultBotSession [QuelariBot Telegram Executor] Cannot invoke "org.telegram.telegrambots.meta.api.objects.Message.getChat()" because the return value of "org.telegram.telegrambots.meta.api.objects.Update.getMessage()" is null
+java.lang.NullPointerException: Cannot invoke "org.telegram.telegrambots.meta.api.objects.Message.getChat()" because the return value of "org.telegram.telegrambots.meta.api.objects.Update.getMessage()" is null
+	at telegram.test.telegram.bot.test.service.TelegramBot.onUpdateReceived(TelegramBot.java:61)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at org.telegram.telegrambots.meta.generics.LongPollingBot.onUpdatesReceived(LongPollingBot.java:27)
+	at org.telegram.telegrambots.updatesreceivers.DefaultBotSession$HandlerThread.run(DefaultBotSession.java:317)
+2023-01-22 22:57:58,628 INFO telegram.test.telegram.bot.test.service.TelegramBot [QuelariBot Telegram Executor] Hi, Ilya! I'm a Telegram bot.'Reply sent
+2023-01-22 22:57:58,629 ERROR org.telegram.telegrambots.updatesreceivers.DefaultBotSession [QuelariBot Telegram Executor] Cannot invoke "org.telegram.telegrambots.meta.api.objects.Message.getChat()" because the return value of "org.telegram.telegrambots.meta.api.objects.Update.getMessage()" is null
+java.lang.NullPointerException: Cannot invoke "org.telegram.telegrambots.meta.api.objects.Message.getChat()" because the return value of "org.telegram.telegrambots.meta.api.objects.Update.getMessage()" is null
+	at telegram.test.telegram.bot.test.service.TelegramBot.onUpdateReceived(TelegramBot.java:61)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at org.telegram.telegrambots.meta.generics.LongPollingBot.onUpdatesReceived(LongPollingBot.java:27)
+	at org.telegram.telegrambots.updatesreceivers.DefaultBotSession$HandlerThread.run(DefaultBotSession.java:317)
+2023-01-22 22:59:24,509 INFO telegram.test.telegram.bot.test.service.TelegramBot [QuelariBot Telegram Executor] Hi, Helen! I'm a Telegram bot.'Reply sent
+2023-01-22 22:59:24,511 INFO telegram.test.telegram.bot.test.service.TelegramBot [QuelariBot Telegram Executor] Replied to userHelen
+2023-01-22 22:59:29,421 INFO telegram.test.telegram.bot.test.service.TelegramBot [QuelariBot Telegram Executor] Hi, Alina! I'm a Telegram bot.'Reply sent
+2023-01-22 22:59:29,421 INFO telegram.test.telegram.bot.test.service.TelegramBot [QuelariBot Telegram Executor] Replied to userAlina
+2023-01-22 23:02:42,626 INFO telegram.test.telegram.bot.test.service.TelegramBot [QuelariBot Telegram Executor] Hi, Ilya! I'm a Telegram bot.'Reply sent
+2023-01-22 23:02:42,630 ERROR org.telegram.telegrambots.updatesreceivers.DefaultBotSession [QuelariBot Telegram Executor] Cannot invoke "org.telegram.telegrambots.meta.api.objects.Message.getChat()" because the return value of "org.telegram.telegrambots.meta.api.objects.Update.getMessage()" is null
+java.lang.NullPointerException: Cannot invoke "org.telegram.telegrambots.meta.api.objects.Message.getChat()" because the return value of "org.telegram.telegrambots.meta.api.objects.Update.getMessage()" is null
+	at telegram.test.telegram.bot.test.service.TelegramBot.onUpdateReceived(TelegramBot.java:61)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at org.telegram.telegrambots.meta.generics.LongPollingBot.onUpdatesReceived(LongPollingBot.java:27)
+	at org.telegram.telegrambots.updatesreceivers.DefaultBotSession$HandlerThread.run(DefaultBotSession.java:317)
+2023-01-22 23:02:47,237 INFO telegram.test.telegram.bot.test.service.TelegramBot [QuelariBot Telegram Executor] Reply sent
+2023-01-22 23:02:47,239 ERROR org.telegram.telegrambots.updatesreceivers.DefaultBotSession [QuelariBot Telegram Executor] Cannot invoke "org.telegram.telegrambots.meta.api.objects.Message.getChat()" because the return value of "org.telegram.telegrambots.meta.api.objects.Update.getMessage()" is null
+java.lang.NullPointerException: Cannot invoke "org.telegram.telegrambots.meta.api.objects.Message.getChat()" because the return value of "org.telegram.telegrambots.meta.api.objects.Update.getMessage()" is null
+	at telegram.test.telegram.bot.test.service.TelegramBot.onUpdateReceived(TelegramBot.java:61)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at org.telegram.telegrambots.meta.generics.LongPollingBot.onUpdatesReceived(LongPollingBot.java:27)
+	at org.telegram.telegrambots.updatesreceivers.DefaultBotSession$HandlerThread.run(DefaultBotSession.java:317)
+2023-01-22 23:03:32,813 INFO telegram.test.telegram.bot.test.Application [main] Starting Application using Java 19.0.1 on 192.168.0.5 with PID 17920 (/Users/oellore/Documents/testBot/telegram.bot.test/build/classes/java/main started by oellore in /Users/oellore/Documents/testBot/telegram.bot.test)
+2023-01-22 23:03:32,813 INFO telegram.test.telegram.bot.test.Application [main] No active profile set, falling back to 1 default profile: "default"
+2023-01-22 23:03:33,532 INFO telegram.test.telegram.bot.test.Application [main] Started Application in 0.84 seconds (JVM running for 1.024)
+2023-01-22 23:03:39,622 INFO telegram.test.telegram.bot.test.service.TelegramBot [QuelariBot Telegram Executor] Reply sent
+2023-01-22 23:03:39,622 INFO telegram.test.telegram.bot.test.service.TelegramBot [QuelariBot Telegram Executor] Replied to userIlya
+2023-01-22 23:04:31,470 INFO telegram.test.telegram.bot.test.Application [main] Starting Application using Java 19.0.1 on 192.168.0.5 with PID 17926 (/Users/oellore/Documents/testBot/telegram.bot.test/build/classes/java/main started by oellore in /Users/oellore/Documents/testBot/telegram.bot.test)
+2023-01-22 23:04:31,471 INFO telegram.test.telegram.bot.test.Application [main] No active profile set, falling back to 1 default profile: "default"
+2023-01-22 23:04:32,190 INFO telegram.test.telegram.bot.test.Application [main] Started Application in 0.84 seconds (JVM running for 1.018)
+2023-01-22 23:04:36,567 INFO telegram.test.telegram.bot.test.service.TelegramBot [QuelariBot Telegram Executor] Reply sent
+2023-01-22 23:04:36,567 INFO telegram.test.telegram.bot.test.service.TelegramBot [QuelariBot Telegram Executor] Replied to userIlya
