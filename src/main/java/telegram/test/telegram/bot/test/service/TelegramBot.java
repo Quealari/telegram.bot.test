@@ -6,7 +6,6 @@ import org.telegram.telegrambots.bots.TelegramLongPollingBot;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.objects.Message;
 import org.telegram.telegrambots.meta.api.objects.Update;
-import org.telegram.telegrambots.meta.api.objects.commands.BotCommand;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 import telegram.test.telegram.bot.test.buttons.Buttons;
 import telegram.test.telegram.bot.test.config.BotConfig;
@@ -68,8 +67,9 @@ public class TelegramBot extends TelegramLongPollingBot {
                 sendHelpText(chatId, "HELP_TEXT");
                 break;
             default:
-                startBot(chatId, userName);
+                sendAnotherText(chatId, userName);
                 break;
+                //todo поработать тут с условиями продумать логику
         }
     }
 
