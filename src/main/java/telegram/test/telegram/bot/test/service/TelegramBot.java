@@ -67,7 +67,7 @@ public class TelegramBot extends TelegramLongPollingBot {
                 sendHelpText(chatId, "HELP_TEXT");
                 break;
             default:
-                sendAnotherText(chatId, userName);
+                sendAnotherText(chatId, "Нажми кнопку, балда");
                 break;
                 //todo поработать тут с условиями продумать логику
         }
