@@ -4,7 +4,9 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
+import org.telegram.telegrambots.meta.api.objects.Message;
 import org.telegram.telegrambots.meta.api.objects.Update;
+import org.telegram.telegrambots.meta.api.objects.commands.BotCommand;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 import telegram.test.telegram.bot.test.buttons.Buttons;
 import telegram.test.telegram.bot.test.config.BotConfig;
@@ -32,18 +34,26 @@ public class TelegramBot extends TelegramLongPollingBot {
 
     @Override
     public void onUpdateReceived(Update update) {
+
+
+
         var chatId = update.getMessage().getChatId();
         var userName = update.getMessage().getFrom().getFirstName();
 
+
         //если получено сообщение текстом
         if (update.hasMessage() && update.getMessage().hasText()) {
-            // в эту переменную текст входящего сообщения
-            var receivedMessage = update.getMessage().getText();
+            Message message = new Message();
+            message.setReplyMarkup(Buttons.inlineMarkup());
+            var receivedMessage = update.getMessage().getText(); // в эту переменную текст входящего сообщения
             botAnswerUtils(receivedMessage, chatId, userName);
+        }
 
-            //если нажата одна из кнопок бота
-        } else if (update.hasCallbackQuery()) {
+        //если нажата одна из кнопок бота
+        else if (update.hasCallbackQuery()) {
             var receivedMessage = update.getCallbackQuery().getData();
+            receivedMessage = update.getCallbackQuery().getData();
+
             botAnswerUtils(receivedMessage, chatId, userName);
         }
         log.info("Replied to user" + update.getMessage().getChat().getFirstName());
@@ -57,9 +67,8 @@ public class TelegramBot extends TelegramLongPollingBot {
             case "/help":
                 sendHelpText(chatId, "HELP_TEXT");
                 break;
-            case "привет":
-                sendAnotherText(chatId, "Нажми на кнопку, балда");
             default:
+                startBot(chatId, userName);
                 break;
         }
     }
