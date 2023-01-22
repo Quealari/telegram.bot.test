@@ -63,15 +63,10 @@ public class TelegramBot extends TelegramLongPollingBot {
 
     private void botAnswerUtils(String receivedMessage, long chatId, String userName) {
         switch (receivedMessage) {
-            case "/start":
-                startBot(chatId, userName);
-                break;
-            case "/help":
-                sendHelpText(chatId, "HELP_TEXT");
-                break;
-            default:
-                sendAnotherText(chatId, userName + ", нажми кнопку, балда");
-                break;
+            case "/start" -> startBot(chatId, userName);
+            case "/help" -> sendHelpText(chatId, "HELP_TEXT");
+            default -> sendAnotherText(chatId, userName + ", нажми кнопку, балда");
+
             //todo поработать тут с условиями продумать логику
         }
     }
