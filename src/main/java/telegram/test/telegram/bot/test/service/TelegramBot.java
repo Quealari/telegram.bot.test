@@ -1,9 +1,7 @@
 package telegram.test.telegram.bot.test.service;
 
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.objects.Update;
@@ -11,19 +9,12 @@ import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 import telegram.test.telegram.bot.test.buttons.Buttons;
 import telegram.test.telegram.bot.test.config.BotConfig;
 
-import java.util.ArrayList;
-import java.util.List;
-
 
 @Component
 @Slf4j
 public class TelegramBot extends TelegramLongPollingBot {
 
-
     final BotConfig config;
-
-    @Autowired
-    Buttons buttons;
 
     public TelegramBot(BotConfig config) {
         this.config = config;
@@ -41,25 +32,77 @@ public class TelegramBot extends TelegramLongPollingBot {
 
     @Override
     public void onUpdateReceived(Update update) {
-        long chatId = update.getMessage().getChatId();
-        sendMessage(chatId, "Какую таблетку выпить?");
-        SendMessage message = new SendMessage();
-        buttons.setButtons(message);
+        var chatId = update.getMessage().getChatId();
+        var userName = update.getMessage().getFrom().getFirstName();
 
+        //если получено сообщение текстом
+        if (update.hasMessage() && update.getMessage().hasText()) {
+            // в эту переменную текст входящего сообщения
+            var receivedMessage = update.getMessage().getText();
+            botAnswerUtils(receivedMessage, chatId, userName);
 
+            //если нажата одна из кнопок бота
+        } else if (update.hasCallbackQuery()) {
+            var receivedMessage = update.getCallbackQuery().getData();
+            botAnswerUtils(receivedMessage, chatId, userName);
+        }
         log.info("Replied to user" + update.getMessage().getChat().getFirstName());
     }
 
-    public void sendMessage(long chatId, String textToSend) {
+    private void botAnswerUtils(String receivedMessage, long chatId, String userName) {
+        switch (receivedMessage) {
+            case "/start":
+                startBot(chatId, userName);
+                break;
+            case "/help":
+                sendHelpText(chatId, "HELP_TEXT");
+                break;
+            case "привет":
+                sendAnotherText(chatId, "Нажми на кнопку, балда");
+            default:
+                break;
+        }
+    }
+
+    private void startBot(long chatId, String userName) {
         SendMessage message = new SendMessage();
-        message.setChatId(String.valueOf(chatId));
+        message.setChatId(chatId);
+        message.setText("Hi, " + userName + "! I'm a Telegram bot.'");
+        message.setReplyMarkup(Buttons.inlineMarkup());
+
+
+        try {
+            execute(message); // здесть отправляем приветственное сообщение
+            log.info(message.getText() + "Reply sent");
+        } catch (TelegramApiException e) {
+            log.error(e.getMessage());
+        }
+    }
+
+    private void sendHelpText(long chatId, String textToSend) {
+        SendMessage message = new SendMessage();
+        message.setChatId(chatId);
         message.setText(textToSend);
 
         try {
             execute(message);
-        } catch (TelegramApiException exception) {
-            log.error("Случилась ошибка " + exception.getMessage());
+            log.info("Reply sent");
+        } catch (TelegramApiException e) {
+            log.error(e.getMessage());
 
+        }
+    }
+
+    private void sendAnotherText(long chatId, String textToSend) {
+        SendMessage message = new SendMessage();
+        message.setChatId(chatId);
+        message.setText(textToSend);
+
+        try {
+            execute(message);
+            log.info("Reply sent");
+        } catch (TelegramApiException e) {
+            log.error(e.getMessage());
         }
     }
 
