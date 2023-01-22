@@ -10,7 +10,6 @@ import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 import telegram.test.telegram.bot.test.buttons.Buttons;
 import telegram.test.telegram.bot.test.config.BotConfig;
 
-
 @Component
 @Slf4j
 public class TelegramBot extends TelegramLongPollingBot {
@@ -33,24 +32,28 @@ public class TelegramBot extends TelegramLongPollingBot {
 
     @Override
     public void onUpdateReceived(Update update) {
-
-
-
-        var chatId = update.getMessage().getChatId();
-        var userName = update.getMessage().getFrom().getFirstName();
-
+        long chatId = 0;
+        long userId = 0; //это нам понадобится позже
+        String userName = null;
+        String receivedMessage;
 
         //если получено сообщение текстом
         if (update.hasMessage() && update.getMessage().hasText()) {
+
+            userId = update.getMessage().getFrom().getId();
+            chatId = update.getMessage().getChatId();
+            userName = update.getMessage().getFrom().getFirstName();
+
             Message message = new Message();
             message.setReplyMarkup(Buttons.inlineMarkup());
-            var receivedMessage = update.getMessage().getText(); // в эту переменную текст входящего сообщения
+            receivedMessage = update.getMessage().getText(); // в эту переменную текст входящего сообщения
             botAnswerUtils(receivedMessage, chatId, userName);
         }
 
         //если нажата одна из кнопок бота
         else if (update.hasCallbackQuery()) {
-            var receivedMessage = update.getCallbackQuery().getData();
+            chatId = update.getCallbackQuery().getMessage().getChatId();
+            userName = update.getCallbackQuery().getFrom().getFirstName();
             receivedMessage = update.getCallbackQuery().getData();
 
             botAnswerUtils(receivedMessage, chatId, userName);
