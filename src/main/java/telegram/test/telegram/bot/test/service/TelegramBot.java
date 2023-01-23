@@ -4,11 +4,11 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
-import org.telegram.telegrambots.meta.api.objects.Message;
 import org.telegram.telegrambots.meta.api.objects.Update;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
-import telegram.test.telegram.bot.test.buttons.Buttons;
 import telegram.test.telegram.bot.test.config.BotConfig;
+
+import static telegram.test.telegram.bot.test.buttons.Buttons.inlineMarkup;
 
 @Component
 @Slf4j
@@ -32,6 +32,7 @@ public class TelegramBot extends TelegramLongPollingBot {
 
     @Override
     public void onUpdateReceived(Update update) {
+
         long chatId = 0;
         long userId = 0; //это нам понадобится позже
         String userName = null;
@@ -44,10 +45,10 @@ public class TelegramBot extends TelegramLongPollingBot {
             chatId = update.getMessage().getChatId();
             userName = update.getMessage().getFrom().getFirstName();
 
-            Message message = new Message();
-            message.setReplyMarkup(Buttons.inlineMarkup());
             receivedMessage = update.getMessage().getText(); // в эту переменную текст входящего сообщения
+
             botAnswerUtils(receivedMessage, chatId, userName);
+            log.info("Replied to user" + update.getMessage().getChat().getFirstName() + " " + receivedMessage);
         }
 
         //если нажата одна из кнопок бота
@@ -57,8 +58,9 @@ public class TelegramBot extends TelegramLongPollingBot {
             receivedMessage = update.getCallbackQuery().getData();
 
             botAnswerUtils(receivedMessage, chatId, userName);
+            log.info("Replied to user" + update.getCallbackQuery().getFrom().getUserName());// лишний
         }
-        log.info("Replied to user" + update.getMessage().getChat().getFirstName());
+
     }
 
     private void botAnswerUtils(String receivedMessage, long chatId, String userName) {
@@ -75,7 +77,7 @@ public class TelegramBot extends TelegramLongPollingBot {
         SendMessage message = new SendMessage();
         message.setChatId(chatId);
         message.setText("Hi, " + userName + "! I'm a Telegram bot.'");
-        message.setReplyMarkup(Buttons.inlineMarkup());
+        message.setReplyMarkup(inlineMarkup());
 
 
         try {
@@ -104,6 +106,7 @@ public class TelegramBot extends TelegramLongPollingBot {
         SendMessage message = new SendMessage();
         message.setChatId(chatId);
         message.setText(textToSend);
+        message.setReplyMarkup(inlineMarkup());
 
         try {
             execute(message);
